@@ -3,6 +3,7 @@ import numpy as np
 from tensorflow.keras.layers import Layer
 from tensorflow.keras.activations import linear
 import tensorflow as tf
+from keras.engine import keras_tensor
 from ._utils import node as node_utils
 
 
@@ -146,7 +147,7 @@ def single_element(x):
 
 
 def get_one_tensor(x):
-    if isinstance(x, tf.Tensor):
+    if isinstance(x, tf.Tensor) or isinstance(x, keras_tensor.KerasTensor):
         return x
 
     assert len(x) == 1
